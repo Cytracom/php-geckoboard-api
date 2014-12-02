@@ -12,6 +12,8 @@ class HighchartsChart extends Widget
 
     protected $title;
 
+    protected $titleColor = null;
+
     protected $subtitle;
 
     protected $series = array();
@@ -190,6 +192,56 @@ class HighchartsChart extends Widget
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getBackgroundColor()
+    {
+        return $this->backgroundColor === null ? "transparent" : $this->backgroundColor;
+    }
+
+    /**
+     * Set to null for transparent
+     *
+     * @param string $backgroundColor
+     */
+    public function setBackgroundColor($backgroundColor)
+    {
+        $this->backgroundColor = $backgroundColor;
+    }
+
+    /**
+     * @return string
+     */
+    public function getChartGridLinesColor()
+    {
+        return $this->chartGridLinesColor;
+    }
+
+    /**
+     * @param string $chartGridLinesColor
+     */
+    public function setChartGridLinesColor($chartGridLinesColor)
+    {
+        $this->chartGridLinesColor = $chartGridLinesColor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitleColor()
+    {
+        return $this->titleColor;
+    }
+
+    /**
+     * @param mixed $titleColor
+     */
+    public function setTitleColor($titleColor)
+    {
+        $this->titleColor = $titleColor;
+    }
+
 
     public function setSingleSerie($serieName, $serie)
     {
@@ -240,6 +292,10 @@ class HighchartsChart extends Widget
             $returnValues['chart']['style'] = ['color' => $this->getChartGridLinesColor()];
         }
 
+        if($this->getTitleColor()) {
+            $returnValues['title']['style'] = ['color' => $this->getTitleColor()];
+        }
+
         if ($this->getXAxisLabels()) {
             $returnValues['xAxis']['categories'] = $this->getXAxisLabels();
         }
@@ -275,39 +331,5 @@ class HighchartsChart extends Widget
         }
 
         return array('highchart' => $returnValues);
-    }
-
-    /**
-     * @return string
-     */
-    public function getBackgroundColor()
-    {
-        return $this->backgroundColor === null ? "transparent" : $this->backgroundColor;
-    }
-
-    /**
-     * Set to null for transparent
-     *
-     * @param string $backgroundColor
-     */
-    public function setBackgroundColor($backgroundColor)
-    {
-        $this->backgroundColor = $backgroundColor;
-    }
-
-    /**
-     * @return string
-     */
-    public function getChartGridLinesColor()
-    {
-        return $this->chartGridLinesColor;
-    }
-
-    /**
-     * @param string $chartGridLinesColor
-     */
-    public function setChartGridLinesColor($chartGridLinesColor)
-    {
-        $this->chartGridLinesColor = $chartGridLinesColor;
     }
 }
