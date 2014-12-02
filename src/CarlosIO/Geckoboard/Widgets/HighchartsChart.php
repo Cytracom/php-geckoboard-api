@@ -16,6 +16,8 @@ class HighchartsChart extends Widget
 
     protected $series = array();
 
+    protected $serieColors = array();
+
     protected $xAxisTitle;
 
     protected $xAxisLabels = array();
@@ -23,6 +25,7 @@ class HighchartsChart extends Widget
     protected $yAxisTitle;
 
     protected $yAxisLabels = array();
+
 
     /**
      * @return array
@@ -190,6 +193,16 @@ class HighchartsChart extends Widget
         $this->series[$serieName] = $serie;
     }
 
+    public function setSerieColor($serieName, $color)
+    {
+        $this->serieColors[$serieName] = $color;
+    }
+
+    public function getSerieColor($serieName)
+    {
+        return $this->serieColors[$serieName];
+    }
+
     public function addItemSerie($serieName, $item)
     {
         if (!isset($this->series[$serieName])) {
@@ -241,9 +254,10 @@ class HighchartsChart extends Widget
 
         foreach ($this->getSeries() as $serieName => $serieValues) {
             $serieData = array(
-                'name' => (isset($serieValues['name']) && $serieValues['name']) ? $serieValues['name'] : $serieName,
-                'data' => (isset($serieValues['data']) && $serieValues['data']) ? $serieValues['data'] : $serieValues,
-                'type' => (isset($serieValues['type']) && $serieValues['type']) ? $serieValues['type'] : 'line',
+                'name' =>  (isset($serieValues['name']) && $serieValues['name']) ? $serieValues['name'] : $serieName,
+                'data' =>  (isset($serieValues['data']) && $serieValues['data']) ? $serieValues['data'] : $serieValues,
+                'type' =>  (isset($serieValues['type']) && $serieValues['type']) ? $serieValues['type'] : 'line',
+                'color' => (isset($this->serieColors[$serieName]) && $this->serieColors[$serieName]) ? "#".$this->serieColors[$serieName] : "#cccccc"
             );
 
             $returnValues['series'][] = $serieData;
