@@ -1,5 +1,6 @@
 <?php
 namespace CarlosIO\Geckoboard\Widgets;
+use CarlosIO\Geckoboard\Data\Highchart\Legend;
 
 /**
  * Class LineChart
@@ -31,6 +32,10 @@ class HighchartsChart extends Widget
     protected $backgroundColor = null;
 
     protected $chartGridLinesColor = null;
+
+    protected $legend = null;
+
+
 
     /**
      * @return array
@@ -242,6 +247,21 @@ class HighchartsChart extends Widget
         $this->titleColor = $titleColor;
     }
 
+    /**
+     * @return null|Legend
+     */
+    public function getLegend()
+    {
+        return $this->legend;
+    }
+
+    /**
+     * @param null|Legend $legend
+     */
+    public function setLegend(Legend $legend)
+    {
+        $this->legend = $legend;
+    }
 
     public function setSingleSerie($serieName, $serie)
     {
@@ -289,11 +309,11 @@ class HighchartsChart extends Widget
         );
 
         if($this->getChartGridLinesColor()) {
-            $returnValues['chart']['style'] = ['color' => $this->getChartGridLinesColor()];
+            $returnValues['chart']['style'] = ['color' => '#'.$this->getChartGridLinesColor()];
         }
 
         if($this->getTitleColor()) {
-            $returnValues['title']['style'] = ['color' => $this->getTitleColor()];
+            $returnValues['title']['style'] = ['color' => '#'.$this->getTitleColor()];
         }
 
         if ($this->getXAxisLabels()) {
@@ -308,6 +328,10 @@ class HighchartsChart extends Widget
         }
         if ($this->getYAxisTitle()) {
             $returnValues['yAxis']['title']['text'] = $this->getYAxisTitle();
+        }
+
+        if($this->getLegend()){
+            $returnValues['legend'] = $this->getLegend()->getData();
         }
 
         $returnValues['plotOptions'] = array(
