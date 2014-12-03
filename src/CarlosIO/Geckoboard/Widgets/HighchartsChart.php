@@ -33,6 +33,8 @@ class HighchartsChart extends Widget
 
     protected $chartGridLinesColor = null;
 
+    protected $yAxisTitleColor = null;
+
     protected $legend = null;
 
 
@@ -287,6 +289,22 @@ class HighchartsChart extends Widget
     }
 
     /**
+     * @return null|string
+     */
+    public function getYAxisTitleColor()
+    {
+        return $this->yAxisTitleColor;
+    }
+
+    /**
+     * @param null|string $yAxisTitleColor
+     */
+    public function setYAxisTitleColor($yAxisTitleColor)
+    {
+        $this->yAxisTitleColor = $yAxisTitleColor;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getData()
@@ -328,6 +346,10 @@ class HighchartsChart extends Widget
         }
         if ($this->getYAxisTitle()) {
             $returnValues['yAxis']['title']['text'] = $this->getYAxisTitle();
+        }
+
+        if ($this->getYAxisTitleColor()) {
+            $returnValues['yAxis']['title']['style'] = ['color' => $this->getYAxisTitleColor()];
         }
 
         if($this->getLegend()){
