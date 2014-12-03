@@ -349,7 +349,7 @@ class HighchartsChart extends Widget
         }
 
         if ($this->getYAxisTitleColor()) {
-            $returnValues['yAxis']['title']['style'] = ['color' => $this->getYAxisTitleColor()];
+            $returnValues['yAxis']['title']['style'] = ['color' => '#'.$this->getYAxisTitleColor()];
         }
 
         if($this->getLegend()){
