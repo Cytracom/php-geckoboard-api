@@ -30,6 +30,8 @@ class Legend {
     public function setLabelColor($LabelColor)
     {
         $this->labelColor = $LabelColor;
+
+        return $this;
     }
 
     /**
@@ -46,6 +48,8 @@ class Legend {
     public function setLayout($Layout)
     {
         $this->layout = $Layout;
+
+        return $this;
     }
 
     /**
@@ -62,6 +66,8 @@ class Legend {
     public function setHorizontalAlign($HorizontalAlign)
     {
         $this->horizontalAlign = $HorizontalAlign;
+
+        return $this;
     }
 
     /**
@@ -78,6 +84,8 @@ class Legend {
     public function setBorderWidth($BorderWidth)
     {
         $this->borderWidth = $BorderWidth;
+
+        return $this;
     }
 
     /**
@@ -94,6 +102,8 @@ class Legend {
     public function setVerticalAlign($verticalAlign)
     {
         $this->verticalAlign = $verticalAlign;
+
+        return $this;
     }
 
     public function getData() {
