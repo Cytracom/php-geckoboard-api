@@ -11,10 +11,10 @@ namespace CarlosIO\Geckoboard\Data\Highchart;
 
 class Legend {
     protected $labelColor = null;
-    protected $layout = null;
-    protected $horizontalAlign = null;
-    protected $verticalAlign = null;
-    protected $borderWidth = null;
+    protected $layout = 'horizontal';
+    protected $horizontalAlign = 'center';
+    protected $verticalAlign = 'bottom';
+    protected $borderWidth = 1;
 
     /**
      * @return null|string
