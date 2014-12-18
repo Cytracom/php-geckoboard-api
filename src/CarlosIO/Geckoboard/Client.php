@@ -11,7 +11,7 @@ use CarlosIO\Geckoboard\Widgets\Widget;
  */
 class Client
 {
-    const URI = 'https://push.geckoboard.com';
+    const URI = 'http://push.geckoboard.com';
 
     /**
      * @var \Guzzle\Http\Client
